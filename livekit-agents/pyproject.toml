@@ -158,9 +158,16 @@ path = "livekit/agents/version.py"
 packages = ["livekit"]
 include = ["livekit/agents/resources/*", "livekit/agents/debug/index.html"]
 
+[tool.hatch.build.targets.wheel.force-include]
+"livekit_agents_hosted_logs.pth" = "livekit_agents_hosted_logs.pth"
+"livekit_agents_hosted_logs.start" = "livekit_agents_hosted_logs.start"
 
 [tool.hatch.build.targets.sdist]
-include = ["/livekit"]
+include = [
+    "/livekit",
+    "/livekit_agents_hosted_logs.pth",
+    "/livekit_agents_hosted_logs.start",
+]
 
 [tool.uv]
 exclude-newer = "7 days"
