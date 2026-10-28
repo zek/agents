@@ -115,10 +115,9 @@ class LLM(llm.LLM):
 
     ``prompt_cache_options`` (including ``ttl``) is forwarded as given.
 
-    A reply with more than one message item keeps only the first message, plus the next
-    one when the first is ``commentary``.
-
-    See ``examples/voice_agents/inference_responses_agent.py``.
+    When a reply holds several message items, only the first one that emits text is
+    spoken. If that message is ``commentary``, the next message is spoken after it, and
+    so on until a non-commentary message; later messages and their tool calls are dropped.
     """
 
     _provider_tool_type: type[llm.ProviderTool] = llm.ProviderTool
